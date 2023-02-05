@@ -44,7 +44,7 @@ public class SearchStudentActivity extends AppCompatActivity {
                         dialog.dismissDialog();
                         startActivity(intent);
                     }
-                },5000);
+                },2000);
 
         }
         });

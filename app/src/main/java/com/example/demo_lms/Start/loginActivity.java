@@ -15,6 +15,7 @@ import com.example.demo_lms.R;
 import com.example.demo_lms.admin.AdminActivity;
 import com.example.demo_lms.student.StudentActivity;
 import com.example.demo_lms.teacher.TeacherActivity;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,8 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 public class loginActivity extends AppCompatActivity {
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fir-lms-77a72-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    private EditText username;
-    private EditText pass;
+    private TextInputLayout username;
+    private TextInputLayout pass;
     private Button login;
     private TextView second;
     private FirebaseAuth auth;
@@ -36,8 +37,8 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = (EditText) findViewById(R.id.Class);
-        pass = (EditText) findViewById(R.id.pass);
+        username = (TextInputLayout) findViewById(R.id.Class);
+        pass = (TextInputLayout) findViewById(R.id.pass);
         login = (Button) findViewById(R.id.btn);
         second = (TextView) findViewById(R.id.second);
         auth = FirebaseAuth.getInstance();
@@ -45,8 +46,8 @@ public class loginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username_txt = username.getText().toString();
-                String pass_txt = pass.getText().toString();
+                String username_txt = username.getEditText().getText().toString();
+                String pass_txt = pass.getEditText().getText().toString();
                 if (username_txt.isEmpty() || pass_txt.isEmpty()) {
                     Toast.makeText(loginActivity.this, "Please enter Email or Password", Toast.LENGTH_SHORT).show();
                 } else {
