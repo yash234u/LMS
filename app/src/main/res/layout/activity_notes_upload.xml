@@ -13,7 +13,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="360dp"
+        android:gravity="center"
         android:hint="Select File from Storage"
         android:minHeight="48dp"
         android:textColor="#0000FF"
@@ -21,18 +22,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="29dp"
+        android:background="@drawable/button"
+        android:padding="10dp"
+        android:layout_margin="20dp"
         android:text="Upload File"
-        android:textColor="#0000FF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="213dp"
+        android:layout_height="222dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/upload" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Note: All Files should be in PDF Format"
+        android:textColor="#FF0000"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.493" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

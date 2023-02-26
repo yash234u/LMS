@@ -31,7 +31,7 @@ public class NotesUpload extends AppCompatActivity {
 
     EditText editText;
     Button btn;
-//
+
 //    StorageReference storageReference;
 //    DatabaseReference databaseReference;
 
@@ -138,32 +138,4 @@ public class NotesUpload extends AppCompatActivity {
     }
 
 
-//    private void uploadPDFFileFirebase(Uri data) {
-//        final ProgressDialog progressDialog= new ProgressDialog( this);
-//        progressDialog.setTitle("File is loading...");
-//        progressDialog.show();
-//        StorageReference reference =storageReference.child("uploadPDF" +System.currentTimeMillis() +".pdf");
-//        reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                Task<Uri> uriTask =taskSnapshot.getStorage().getDownloadUrl();
-//                while (!uriTask.isComplete());
-//                Uri uri = uriTask.getResult();
-//                puPDF putPDF = new puPDF (editText.getText().toString(), uri.toString());
-//                databaseReference.child(databaseReference.push().getKey()).setValue(putPDF);
-//                Toast.makeText( NotesUpload.this, "File Upload", Toast.LENGTH_LONG).show();
-//                progressDialog.dismiss();
-//            }
-//        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//
-//                double progress=(100.0* snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-//                progressDialog.setMessage("File Uploaded.." +(int)progress+"%");
-//            }
-//        });
-//
-//
-//    }
 }

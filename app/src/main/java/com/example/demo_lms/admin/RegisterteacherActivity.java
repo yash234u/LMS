@@ -84,6 +84,7 @@ public class RegisterteacherActivity extends AppCompatActivity {
 
                                     database.child("User_master").child(txt_username).child("Password").setValue(txt_pass);
                                     database.child("User_master").child(txt_username).child("Type").setValue("Teacher");
+                                    database.child("Teacher_master").child(txt_id).child("Enable").setValue("Yes");
                                     Toast.makeText(RegisterteacherActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 }
                             }
