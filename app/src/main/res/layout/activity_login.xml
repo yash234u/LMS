@@ -34,7 +34,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="35dp"
         android:hint="Username"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
@@ -48,7 +48,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="35dp"
         android:hint="Password"
         app:layout_constraintTop_toBottomOf="@+id/Class">
 
