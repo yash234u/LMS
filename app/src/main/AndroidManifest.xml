@@ -3,6 +3,8 @@
     package="com.example.demo_lms">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -11,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Demo_lms">
+        <activity
+            android:name=".teacher.NotesUpload"
+            android:exported="false" />
         <activity
             android:name=".admin.SearchStudentActivity"
             android:exported="false" />
