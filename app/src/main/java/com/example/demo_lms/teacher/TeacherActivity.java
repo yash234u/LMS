@@ -18,7 +18,7 @@ public class TeacherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher);
-        cardView = findViewById(R.id.registerteacher);
+        cardView = findViewById(R.id.UploadNotes);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
