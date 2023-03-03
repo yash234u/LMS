@@ -85,6 +85,16 @@
             app:layout_constraintTop_toBottomOf="@+id/view4"
             tools:context=".Start.RegisterActivity">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Information"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:textSize="17sp"
+                android:textStyle="bold">
+            </TextView>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtid"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

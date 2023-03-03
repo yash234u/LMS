@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
     DatabaseReference database= FirebaseDatabase.getInstance().getReferenceFromUrl("https://fir-lms-77a72-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    String[]item={"BSCIT","BSCCS","BMS","B.com"};
+    String[]item={"Bsc.IT","Bsc.CS",};
     private AutoCompleteTextView Course;
     ArrayAdapter<String> adapterItems;
     private EditText ID;

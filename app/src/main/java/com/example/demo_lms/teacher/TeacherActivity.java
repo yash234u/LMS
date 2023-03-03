@@ -11,25 +11,37 @@ import com.example.demo_lms.R;
 
 public class TeacherActivity extends AppCompatActivity {
 
-    private CardView cardView;
-
+    private CardView UploadNotes;
+    private CardView Assignments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher);
-        cardView = findViewById(R.id.UploadNotes);
+        UploadNotes = findViewById(R.id.UploadNotes);
+        Assignments=findViewById(R.id.Assignment);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
+        UploadNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNotesUpload();
+                goToNotesUploadNotes();
             }
         });
+        Assignments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNotesUploadAssignments();
+            }
+        });
+
     }
 
-    private  void  goToNotesUpload(){
+    private  void  goToNotesUploadNotes(){
         Intent i = new Intent(this,NotesUpload.class);
+        startActivity(i);
+    }
+    private  void  goToNotesUploadAssignments(){
+        Intent i = new Intent(this,AssignmentUpload.class);
         startActivity(i);
     }
 }

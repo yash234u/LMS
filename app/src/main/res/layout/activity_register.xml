@@ -84,6 +84,16 @@
             app:layout_constraintTop_toBottomOf="@+id/view4"
             tools:context=".Start.RegisterActivity">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Information"
+                android:layout_marginTop="10dp"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:gravity="center">
+            </TextView>
+
             <EditText
                 android:id="@+id/ID"
                 android:layout_width="match_parent"
@@ -164,19 +174,6 @@
                 android:hint="Enter your contact"
                 android:padding="15dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="@string/select">
-
-                <AutoCompleteTextView
-                    android:id="@+id/drop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border"></AutoCompleteTextView>
-            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
                 android:id="@+id/Address"
@@ -207,6 +204,42 @@
                 android:hint="Re-enter your Password"
                 android:inputType="textPassword"
                 android:padding="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Information"
+                android:layout_marginTop="20dp"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:gravity="center">
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="@string/select">
+
+                <AutoCompleteTextView
+                    android:id="@+id/drop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtcid"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID"
+                android:enabled="false"
+                android:layout_margin="15dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Register"

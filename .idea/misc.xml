@@ -12,6 +12,8 @@
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/drawable/ic_launcher_background.xml" value="0.316" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/drawable/ic_wave.xml" value="0.284" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_admin.xml" value="0.29393115942028986" />
+        <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_assigment_upload.xml" value="0.2749094202898551" />
+        <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_assignment_upload.xml" value="0.2749094202898551" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_eam_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_exam.xml" value="0.33" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_feedback.xml" value="0.36666666666666664" />
@@ -19,7 +21,7 @@
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_notes_upload.xml" value="0.33" />
-        <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_registerteacher.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_search_student.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/admin/StudioProjects/demo_lms/app/src/main/res/layout/activity_showstudent.xml" value="0.36666666666666664" />
