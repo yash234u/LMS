@@ -91,9 +91,8 @@ public class AssignmentUpload extends AppCompatActivity {
                 while(!uriTask.isComplete());
                 Uri url=uriTask.getResult();
 
-                pdfClass pdfClass=new pdfClass(editText.getText().toString(),url.toString());
-                databaseReference.child("Assignments").child("name").setValue(name.getEditText().getText().toString());
-                databaseReference.child("Assignments").child("Location").setValue(url.toString());
+                databaseReference.child("Assignments_master").child("name").setValue(name.getEditText().getText().toString());
+                databaseReference.child("Assignments_master").child("Location").setValue(url.toString());
                 Toast.makeText(AssignmentUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }

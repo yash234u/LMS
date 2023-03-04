@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.demo_lms.R;
+import com.example.demo_lms.Start.loginActivity;
 
 public class TeacherActivity extends AppCompatActivity {
 
@@ -24,24 +25,14 @@ public class TeacherActivity extends AppCompatActivity {
         UploadNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNotesUploadNotes();
+                startActivity(new Intent(TeacherActivity.this, NotesUpload.class));
             }
         });
         Assignments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNotesUploadAssignments();
+                startActivity(new Intent(TeacherActivity.this, AssignmentUpload.class));
             }
         });
-
-    }
-
-    private  void  goToNotesUploadNotes(){
-        Intent i = new Intent(this,NotesUpload.class);
-        startActivity(i);
-    }
-    private  void  goToNotesUploadAssignments(){
-        Intent i = new Intent(this,AssignmentUpload.class);
-        startActivity(i);
     }
 }

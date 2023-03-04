@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -31,11 +32,10 @@ public class NotesUpload extends AppCompatActivity {
 
     EditText editText;
     Button btn;
+    TextInputLayout name;
 
-//    StorageReference storageReference;
-//    DatabaseReference databaseReference;
-
-
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,99 +43,73 @@ public class NotesUpload extends AppCompatActivity {
 
         editText = findViewById(R.id.editText);
         btn = findViewById(R.id.btn);
+        name=findViewById(R.id.txtname);
 
-//        storageReference = FirebaseStorage.getInstance().getReference();
-//        databaseReference = FirebaseDatabase.getInstance().getReference("UploadPDF");
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://fir-lms-77a72-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
         btn.setEnabled(false);
-
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectPDF();
+                selectFiles();
             }
         });
 
     }
 
-    public void selectPDF() {
+    private void selectFiles() {
         Intent intent = new Intent();
         intent.setType("application/pdf");
         intent.setAction(intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "PDF FILE SELECT"), 12);
-
     }
 
     @Override
-
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
-//        12 && resultCode = RESULT_OK && data = null && data.getData() != null
-        if (requestCode == 12 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == 12 && resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
             btn.setEnabled(true);
-            editText.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
 
+            editText.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    uploadPDFiles(data);
-//                    uploadPDFFileFirebase (data.getData());
-
+                public void onClick(View v) {
+                    UploadFiles(data.getData());
                 }
-
             });
         }
-
     }
 
-
-
-    private  void uploadPDFiles(Intent data){
-
-        // Here we are initialising the progress dialog box
-       ProgressDialog dialog = new ProgressDialog(this);
+    private void UploadFiles(Uri data) {
+        final ProgressDialog dialog = new ProgressDialog(this);
         ((ProgressDialog) dialog).setMessage("Uploading");
-
-        // this will show message uploading
-        // while pdf is uploading
         dialog.show();
-        Uri imageuri = data.getData();
-        final String timestamp = "" + System.currentTimeMillis();
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        final String messagePushID = timestamp;
-        Toast.makeText(this, imageuri.toString(), Toast.LENGTH_SHORT).show();
+        StorageReference reference=storageReference.child("Notes/"+name.getEditText().getText().toString()+".pdf");
+        reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-        // Here we are uploading the pdf in firebase storage with the name of current time
-        final StorageReference filepath = storageReference.child(messagePushID + "." + "pdf");
-        Toast.makeText(this, filepath.getName(), Toast.LENGTH_SHORT).show();
-        filepath.putFile(imageuri).continueWithTask(new Continuation() {
-            @Override
-            public Object then(@NonNull Task task) throws Exception {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
-                }
-                return filepath.getDownloadUrl();
+                Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
+                while(!uriTask.isComplete());
+                Uri url=uriTask.getResult();
+
+                databaseReference.child("Notes_master").child("name").setValue(name.getEditText().getText().toString());
+                databaseReference.child("Notes_master").child("Location").setValue(url.toString());
+                Toast.makeText(NotesUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-                    // After uploading is done it progress
-                    // dialog box will be dismissed
-                    dialog.dismiss();
-                    Uri uri = task.getResult();
-                    String myurl;
-                    myurl = uri.toString();
-                    Toast.makeText(NotesUpload.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    dialog.dismiss();
-                    Log.d("Exception","Exe "+task.getException());
-                    Toast.makeText(NotesUpload.this, "UploadedFailed"+task.getException(), Toast.LENGTH_SHORT).show();
-                }
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+                double progress=(100.0* snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                dialog.setMessage("Uploading:"+(int)progress+"%");
             }
         });
     }
-
-
 }
+

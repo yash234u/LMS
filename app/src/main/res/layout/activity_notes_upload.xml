@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".teacher.NotesUpload">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:hint="Enter File name"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:layout_editor_absoluteX="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="250dp"
@@ -13,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="412dp"
         android:gravity="center"
         android:hint="Select File from Storage"
         android:minHeight="48dp"
@@ -28,11 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="29dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button"
         android:padding="10dp"
-        android:layout_margin="20dp"
         android:text="Upload File"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,15 +68,14 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="29dp"
         android:gravity="center"
         android:text="Note: All Files should be in PDF Format"
         android:textColor="#FF0000"
         android:textSize="17dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.493" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
