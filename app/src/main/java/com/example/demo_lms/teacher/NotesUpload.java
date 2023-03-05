@@ -97,8 +97,9 @@ public class NotesUpload extends AppCompatActivity {
                 while(!uriTask.isComplete());
                 Uri url=uriTask.getResult();
 
-                databaseReference.child("Notes_master").child("name").setValue(name.getEditText().getText().toString());
-                databaseReference.child("Notes_master").child("Location").setValue(url.toString());
+                String UniqueKey=databaseReference.child("Video_master").push().getKey();
+                databaseReference.child("Notes_master").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
+                databaseReference.child("Notes_master").child(UniqueKey).child("Location").setValue(url.toString());
                 Toast.makeText(NotesUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }

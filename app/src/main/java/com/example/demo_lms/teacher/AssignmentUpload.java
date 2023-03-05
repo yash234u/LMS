@@ -91,8 +91,9 @@ public class AssignmentUpload extends AppCompatActivity {
                 while(!uriTask.isComplete());
                 Uri url=uriTask.getResult();
 
-                databaseReference.child("Assignments_master").child("name").setValue(name.getEditText().getText().toString());
-                databaseReference.child("Assignments_master").child("Location").setValue(url.toString());
+                String UniqueKey=databaseReference.child("Video_master").push().getKey();
+                databaseReference.child("Assignments_master").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
+                databaseReference.child("Assignments_master").child(UniqueKey).child("Location").setValue(url.toString());
                 Toast.makeText(AssignmentUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
