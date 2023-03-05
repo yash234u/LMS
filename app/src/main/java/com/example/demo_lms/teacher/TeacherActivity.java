@@ -14,6 +14,7 @@ public class TeacherActivity extends AppCompatActivity {
 
     private CardView UploadNotes;
     private CardView Assignments;
+    private CardView Video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class TeacherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teacher);
         UploadNotes = findViewById(R.id.UploadNotes);
         Assignments=findViewById(R.id.Assignment);
+        Video=findViewById(R.id.videoUpload);
 
         UploadNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,12 @@ public class TeacherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TeacherActivity.this, AssignmentUpload.class));
+            }
+        });
+        Video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TeacherActivity.this,VideoUpload.class));
             }
         });
     }
