@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LMS</string>
+    <string name="select">Select Course</string>
+
+    <string name="openNavDrawer">Navigation Open</string>
+    <string name="closeNavDrawer">Navigation Close</string>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "41606957568",
+    "firebase_url": "https://fir-lms-77a72-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fir-lms-77a72",
+    "storage_bucket": "fir-lms-77a72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41606957568:android:64002d67bcfbdd470ba6e5",
+        "android_client_info": {
+          "package_name": "com.example.demo_lms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41606957568-o7nbo7242o83eoar3jl8dpjanq810sd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn-0zlLwO6uc0a3-RsmhqKiVS9hoNwcIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41606957568-o7nbo7242o83eoar3jl8dpjanq810sd7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
