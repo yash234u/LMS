@@ -2,6 +2,7 @@
   <library name="Gradle: com.google.android.gms:play-services-measurement-sdk:21.2.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ea62c2c3483c6fe3a9c45350fd391c18/transformed/play-services-measurement-sdk-21.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea62c2c3483c6fe3a9c45350fd391c18/transformed/play-services-measurement-sdk-21.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea62c2c3483c6fe3a9c45350fd391c18/transformed/play-services-measurement-sdk-21.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

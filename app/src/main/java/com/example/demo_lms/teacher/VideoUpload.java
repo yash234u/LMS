@@ -32,7 +32,7 @@ import com.google.firebase.storage.UploadTask;
 
 public class VideoUpload extends AppCompatActivity {
 
-    String[]item={"BSCIT","BSCCS",};
+    String[]item={"BSCIT"};
     private AutoCompleteTextView Course;
     ArrayAdapter<String> adapterItems;
     private  static final int PICK_VIDEO_REQUEST=1;
@@ -131,15 +131,9 @@ public class VideoUpload extends AppCompatActivity {
                 String UniqueKey=databaseReference.child("Video_master").push().getKey();
                 if(Course.getText().toString().equals("BSCIT"))
                 {
-                    databaseReference.child("Video_master_BSCIT").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
-                    databaseReference.child("Video_master_BSCIT").child(UniqueKey).child("Location").setValue(url.toString());
-                    Toast.makeText(VideoUpload.this, "Video Uploaded", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                }
-                else if(Course.getText().toString().equals("BSCCS"))
-                {
-                    databaseReference.child("Video_master_BSCCS").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
-                    databaseReference.child("Video_master_BSCCS").child(UniqueKey).child("Location").setValue(url.toString());
+                    databaseReference.child("Video_master").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
+                    databaseReference.child("Video_master").child(UniqueKey).child("Location").setValue(url.toString());
+                    databaseReference.child("Video_master").child(UniqueKey).child("Course").setValue(Course.getText().toString());
                     Toast.makeText(VideoUpload.this, "Video Uploaded", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }

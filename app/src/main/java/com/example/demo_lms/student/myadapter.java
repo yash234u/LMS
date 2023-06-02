@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demo_lms.R;
@@ -25,15 +26,17 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull model model) {
 
         holder.header.setText(model.getName());
-        holder.img1.setOnClickListener(new View.OnClickListener() {
+        holder.Course.setText(model.getCourse());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(holder.img1.getContext(),viewpdf.class);
+                Intent intent=new Intent(holder.header.getContext(),viewpdf.class);
                 intent.putExtra("filename",model.getName());
                 intent.putExtra("fileurl",model.getLocation());
+                intent.putExtra("filecourse",model.getCourse());
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                holder.img1.getContext().startActivity(intent);
+                holder.header.getContext().startActivity(intent);
             }
         });
 
@@ -50,15 +53,16 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
     {
         ImageView img1;
         TextView header;
-
+        TextView Course;
+        CardView cardView;
         public myviewholder(@NonNull View itemView)
         {
             super(itemView);
 
             img1=itemView.findViewById(R.id.img1);
             header=itemView.findViewById(R.id.header);
-
-
+            Course=itemView.findViewById(R.id.Course);
+            cardView=itemView.findViewById(R.id.CardView);
         }
     }
 }

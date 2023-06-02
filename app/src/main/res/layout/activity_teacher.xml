@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroun3"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp">
 
@@ -161,6 +162,54 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/viewprofile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="@color/part4"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="15dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="35dp"
+                        android:layout_marginBottom="12dp"
+                        app:srcCompat="@drawable/profile2" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_centerInParent="false"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:text="Profile"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

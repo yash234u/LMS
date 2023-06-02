@@ -2,6 +2,7 @@
   <library name="Gradle: com.firebaseui:firebase-ui-common:8.0.2@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/68f64813705cfa798cadf606e6b37503/transformed/firebase-ui-common-8.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/68f64813705cfa798cadf606e6b37503/transformed/firebase-ui-common-8.0.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/68f64813705cfa798cadf606e6b37503/transformed/firebase-ui-common-8.0.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

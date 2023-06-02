@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/part1">
+
+
+        <TextView
+            android:id="@+id/txtDelOid"
+            android:layout_width="44dp"
+            android:layout_height="28dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtDelFname"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toEndOf="@+id/txtDelOid"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtDelVname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:gravity="end"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDelFname" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

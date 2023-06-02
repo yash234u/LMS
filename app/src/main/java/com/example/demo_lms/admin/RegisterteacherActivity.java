@@ -3,8 +3,12 @@ package com.example.demo_lms.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,16 +27,18 @@ public class RegisterteacherActivity extends AppCompatActivity {
     DatabaseReference database= FirebaseDatabase.getInstance().getReferenceFromUrl("https://fir-lms-77a72-default-rtdb.asia-southeast1.firebasedatabase.app/");
     private TextInputLayout txtid;
     private TextInputLayout txtname;
-    private TextInputLayout txtusername;
     private RadioGroup Gender;
     private RadioButton Genbutton;
     private TextInputLayout txtemail;
     private TextInputLayout txtcontact;
-    private TextInputLayout txtaddress;
     private TextInputLayout txtpass;
     private TextInputLayout txtrpass;
     private Button btnregister;
+    String[]item={"BSCIT"};
+    private AutoCompleteTextView Course;
+    ArrayAdapter<String> adapterItems;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +46,22 @@ public class RegisterteacherActivity extends AppCompatActivity {
 
         txtid = findViewById(R.id.txtid);
         txtname = findViewById(R.id.txtname);
-        txtusername = findViewById(R.id.txtusername);
         Gender = (RadioGroup) findViewById(R.id.Gender);
         txtemail = findViewById(R.id.txtemail);
-        txtaddress = findViewById(R.id.txtaddress);
         txtcontact = findViewById(R.id.txtcontact);
         txtpass = findViewById(R.id.txtpass);
         txtrpass = findViewById(R.id.txtrpass);
         btnregister = findViewById(R.id.btnregister);
+        Course=findViewById(R.id.drop);
+        adapterItems=new ArrayAdapter<String>(this,R.layout.drop_lis,item);
+        Course.setAdapter(adapterItems);
+        Course.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                String item=adapterView.getItemAtPosition(position).toString();
+            }
+        });
 
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,15 +69,13 @@ public class RegisterteacherActivity extends AppCompatActivity {
 
                 String txt_id = txtid.getEditText().getText().toString();
                 String txt_name = txtname.getEditText().getText().toString();
-                String txt_username = txtusername.getEditText().getText().toString();
                 String txt_email = txtemail.getEditText().getText().toString();
-                String txt_address = txtaddress.getEditText().getText().toString();
                 String txt_pass = txtpass.getEditText().getText().toString();
                 int selectedgender = Gender.getCheckedRadioButtonId();
                 Genbutton = findViewById(selectedgender);
 
-                    if(!validateId() | !validateEmail() | !validateUsername() | !validateFullName() | !validateAddress() |!validatePassword() | !validateGender()
-                            |!validatePhoneNumber() | !validateRPassword())
+                    if(!validateId() | !validateEmail()  | !validateFullName() |!validatePassword() | !validateGender()
+                            |!validatePhoneNumber() | !validateRPassword() | !validateCourse())
                     {
                         Toast.makeText(RegisterteacherActivity.this, "Please Fill all the details", Toast.LENGTH_SHORT).show();
                     }
@@ -76,13 +88,11 @@ public class RegisterteacherActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterteacherActivity.this, "ID already Exists", Toast.LENGTH_SHORT).show();
                                 } else {
                                     database.child("Teacher_master").child(txt_id).child("Name").setValue(txt_name);
-                                    database.child("Teacher_master").child(txt_id).child("Username").setValue(txt_username);
                                     database.child("Teacher_master").child(txt_id).child("Email").setValue(txt_email);
                                     database.child("Teacher_master").child(txt_id).child("Gender").setValue(Genbutton.getText());
-                                    database.child("Teacher_master").child(txt_id).child("Contact").setValue(txt_address);
+                                    database.child("Teacher_master").child(txt_id).child("Contact").setValue(txtcontact.getEditText().getText().toString());
                                     database.child("Teacher_master").child(txt_id).child("Enable").setValue("Yes");
 
-                                    database.child("User_master").child(txt_id).child("Password").setValue(txt_username);
                                     database.child("User_master").child(txt_id).child("Password").setValue(txt_pass);
                                     database.child("User_master").child(txt_id).child("Type").setValue("Teacher");
                                     database.child("User_master").child(txt_id).child("Enable").setValue("Yes");
@@ -124,20 +134,6 @@ public class RegisterteacherActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validateUsername() {
-        String val = txtusername.getEditText().getText().toString().trim();
-        if (val.isEmpty()) {
-            txtusername.setError("Field can not be empty");
-            return false;
-        } else if (val.length() > 20) {
-            txtusername.setError("Username is too large!");
-            return false;
-        } else {
-            txtusername.setError(null);
-            txtusername.setErrorEnabled(false);
-            return true;
-        }
-    }
 
     private boolean validateEmail() {
         String val = txtemail.getEditText().getText().toString().trim();
@@ -180,17 +176,6 @@ public class RegisterteacherActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validateAddress() {
-        String val = txtaddress.getEditText().getText().toString();
-        if (val.isEmpty()) {
-            txtaddress.setError("Field can not be empty");
-            return false;
-        } else {
-            txtaddress.setError(null);
-            txtaddress.setErrorEnabled(false);
-            return true;
-        }
-    }
 
     private boolean validatePassword() {
         String val = txtpass.getEditText().getText().toString().trim();
@@ -226,17 +211,27 @@ public class RegisterteacherActivity extends AppCompatActivity {
             return true;
         }
     }
+    private boolean validateCourse() {
+        String val = Course.getText().toString().trim();
+        if (val.isEmpty()) {
+            Course.setError("Field can not be empty");
+            return false;
+        } else {
+            Course.setError(null);
+            //Course.setErrorEnabled(false);
+            return true;
+        }
+    }
 
     public void clear()
     {
         txtid.getEditText().setText("");
         txtname.getEditText().setText("");
-        txtusername.getEditText().setText("");
         txtemail.getEditText().setText("");
-        txtaddress.getEditText().setText("");
         txtcontact.getEditText().setText("");
         txtpass.getEditText().setText("");
         txtrpass.getEditText().setText("");
+
         Gender.clearCheck();
     }
 

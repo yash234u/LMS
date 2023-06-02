@@ -9,19 +9,20 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtcid"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/Course"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:hint="Course"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="15dp">
+        android:hint="@string/select"
+        app:layout_constraintTop_toBottomOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
+            android:id="@+id/drop"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content"></AutoCompleteTextView>
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtname"
@@ -35,6 +36,22 @@
         tools:layout_editor_absoluteX="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:hint="Submission Date"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/txtname"
+        tools:layout_editor_absoluteX="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>

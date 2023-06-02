@@ -30,11 +30,11 @@ public class ViewNotes extends AppCompatActivity {
 
 
         recview = (RecyclerView) findViewById(R.id.recview);
-        recview.setLayoutManager(new LinearLayoutManager(this));
+        recview.setLayoutManager(new WrapContentLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Assignment_master"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Notes_master"), model.class)
                         .build();
 
 

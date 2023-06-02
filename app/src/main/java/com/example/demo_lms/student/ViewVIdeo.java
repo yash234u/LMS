@@ -26,8 +26,7 @@ public class ViewVIdeo extends AppCompatActivity {
 
     String tutor = "";
     String courseTitle = "";
-    String Details="";
-    String query="";
+    public String Details="";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -56,17 +55,10 @@ public class ViewVIdeo extends AppCompatActivity {
 
             }
         });
-        if(Details.equals("BSCIT"))
-        {
-            query="Video_master_BSCCS";
-        }
-        else
-        {
-            query="Video_master_BSCCS";
-        }
+
 
         videoArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(query);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Video_master");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -76,6 +68,7 @@ public class ViewVIdeo extends AppCompatActivity {
                 }
                 adapterVideo = new VideoListAdpater(ViewVIdeo.this, videoArrayList);
                 videosRv.setAdapter(adapterVideo);
+
             }
 
             @Override
@@ -83,9 +76,8 @@ public class ViewVIdeo extends AppCompatActivity {
 
             }
         });
-        //loadCourseList();
-    }
-    private void loadCourseList() {
 
     }
+
+
 }

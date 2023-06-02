@@ -120,15 +120,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtusername"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
-                android:layout_margin="15dp">
-                <com.google.android.material.textfield.TextInputEditText
+                android:layout_margin="15dp"
+                android:hint="@string/select">
+
+                <AutoCompleteTextView
+                    android:id="@+id/drop"
+                    android:enabled="false"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"></AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
@@ -183,18 +185,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contact"
-                android:layout_margin="15dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtaddress"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Address"
                 android:layout_margin="15dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

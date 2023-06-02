@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +12,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,9 +37,13 @@ public class NotesUpload extends AppCompatActivity {
     EditText editText;
     Button btn;
     TextInputLayout name;
+    String[]item={"BSCIT"};
+    private AutoCompleteTextView Course;
+    ArrayAdapter<String> adapterItems;
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +52,16 @@ public class NotesUpload extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         btn = findViewById(R.id.btn);
         name=findViewById(R.id.txtname);
+        Course=findViewById(R.id.drop);
+        adapterItems=new ArrayAdapter<String>(this,R.layout.drop_lis,item);
+        Course.setAdapter(adapterItems);
+        Course.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                String item=adapterView.getItemAtPosition(position).toString();
+            }
+        });
 
 
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -78,7 +96,13 @@ public class NotesUpload extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(name.getEditText().getText().toString().isEmpty()||Course.getText().toString().isEmpty())
+                    {
+                        Toast.makeText(NotesUpload.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
                     UploadFiles(data.getData());
+                    }
                 }
             });
         }
@@ -98,10 +122,14 @@ public class NotesUpload extends AppCompatActivity {
                 Uri url=uriTask.getResult();
 
                 String UniqueKey=databaseReference.child("Notes_master").push().getKey();
-                databaseReference.child("Notes_master").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
-                databaseReference.child("Notes_master").child(UniqueKey).child("Location").setValue(url.toString());
-                Toast.makeText(NotesUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+                if(Course.getText().toString().equals("BSCIT"))
+                {
+                    databaseReference.child("Notes_master").child(UniqueKey).child("name").setValue(name.getEditText().getText().toString());
+                    databaseReference.child("Notes_master").child(UniqueKey).child("Location").setValue(url.toString());
+                    databaseReference.child("Notes_master").child(UniqueKey).child("Course").setValue(Course.getText().toString());
+                    Toast.makeText(NotesUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

@@ -4,12 +4,20 @@ public class model {
 
     public model()
     {}
-    String name, Location,Course;
+    String name, Location,Course,SubmissionDate;
 
     public model(String name, String location,String Course) {
         this.name = name;
         Location = location;
         this.Course=Course;
+    }
+
+    public String getSubmissionDate() {
+        return SubmissionDate;
+    }
+
+    public void setSubmissionDate(String submissionDate) {
+        SubmissionDate = submissionDate;
     }
 
     public String getName() {

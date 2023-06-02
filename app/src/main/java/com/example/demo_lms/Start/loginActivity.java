@@ -1,8 +1,11 @@
 package com.example.demo_lms.Start;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +35,10 @@ public class loginActivity extends AppCompatActivity {
     private Button login;
     private TextView second;
     private FirebaseAuth auth;
+    AlertDialog.Builder builder;
+    private TextView forgot;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,7 @@ public class loginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.btn);
         second = (TextView) findViewById(R.id.second);
         auth = FirebaseAuth.getInstance();
+        forgot=findViewById(R.id.Forgotpass_pass);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +58,7 @@ public class loginActivity extends AppCompatActivity {
                 String pass_txt = pass.getEditText().getText().toString();
 
                 if (ID_txt.isEmpty() || pass_txt.isEmpty()) {
-                    Toast.makeText(loginActivity.this, "Please enter Email or Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(loginActivity.this, "Please enter ID or Password", Toast.LENGTH_SHORT).show();
                 } else {
                     database.child("User_master").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -73,7 +80,7 @@ public class loginActivity extends AppCompatActivity {
                                             finish();
                                         } else if (type.equals("Teacher")) {
                                             Toast.makeText(loginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(loginActivity.this, TeacherActivity.class));
+                                            startActivity(new Intent(loginActivity.this, TeacherActivity.class).putExtra("IDfromlogin",ID_txt));
                                             finish();
                                         }
                                     } else {
@@ -83,7 +90,7 @@ public class loginActivity extends AppCompatActivity {
                                     Toast.makeText(loginActivity.this, "Access Denied", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(loginActivity.this, "Wrong Username", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(loginActivity.this, "Wrong ID", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -103,5 +110,29 @@ public class loginActivity extends AppCompatActivity {
 
             }
         });
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(loginActivity.this,Forgotpass.class));
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.app_name) .setTitle(R.string.app_name);
+        builder.setMessage("Do you want to close LMS?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        }).show();
     }
 }

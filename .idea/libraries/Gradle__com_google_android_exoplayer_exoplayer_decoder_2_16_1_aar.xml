@@ -5,6 +5,7 @@
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f352d86d65b5495b4926ec21f969d9c1/transformed/exoplayer-decoder-2.16.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f352d86d65b5495b4926ec21f969d9c1/transformed/exoplayer-decoder-2.16.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f352d86d65b5495b4926ec21f969d9c1/transformed/exoplayer-decoder-2.16.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />

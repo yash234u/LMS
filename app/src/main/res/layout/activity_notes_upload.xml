@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:hint="Enter File name"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/Course"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         tools:layout_editor_absoluteX="15dp">
 
@@ -22,6 +22,22 @@
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Course"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:hint="@string/select"
+        app:layout_constraintTop_toBottomOf="@+id/txtname">
+
+        <AutoCompleteTextView
+            android:id="@+id/drop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="250dp"
@@ -29,14 +45,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="412dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:hint="Select File from Storage"
         android:minHeight="48dp"
         android:textColor="#0000FF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Course" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"

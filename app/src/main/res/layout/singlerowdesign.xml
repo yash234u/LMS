@@ -3,8 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
-    android:elevation="4dp"
+    app:cardCornerRadius="30dp"
+    android:elevation="10dp"
+    android:id="@+id/CardView"
+
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -32,9 +34,28 @@
             android:layout_toRightOf="@id/img1"
             android:gravity="center_vertical"
             android:text="This is Header Text"
-            android:textColor="#fff"
             android:textSize="25dp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/CourseDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/img1"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/header"
+            android:text="Course:"
+            android:textSize="15dp"></TextView>
+        <TextView
+            android:id="@+id/Course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/CourseDisplay"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/header"
+            android:text="Course"
+            android:textSize="15dp"></TextView>
 
     </RelativeLayout>
 
